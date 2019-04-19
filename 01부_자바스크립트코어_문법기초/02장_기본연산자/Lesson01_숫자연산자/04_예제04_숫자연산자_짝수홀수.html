@@ -11,12 +11,27 @@
         */
 
         //풀이:
+        window.onload = function(){
+          var check_btn  = document.getElementById('check_btn');
+          var check_text = document.getElementById('check_text');
+          check_btn.addEventListener("click",function(){
+            var insertNum = document.getElementById('number_check').value;
+            if(insertNum === ""){
+              check_text.innerHTML = "숫자를 입력하세요";
+            } else {
+              insertNum%2 === 0 ? check_text.innerHTML = "짝수" : check_text.innerHTML = "홀수";
+            }
+          });
 
+        }
 
     </script>
 </head>
 
 <body>
+  <input type="text" id="number_check">
+  <span id="check_text"></span>
+  <div id="check_btn">확인</div>
 
 </body>
 </html>

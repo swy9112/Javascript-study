@@ -3,7 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
-    <script src="../../libs/jquery-1.11.0.min.js"></script>
 
     <script>
         /*
@@ -11,13 +10,14 @@
 
          무작성 따라하기
          */
-        $(document).ready(function(){
 
-        })
-
-
+        window.onload = function(){
+          setInterval(function(){
+            var bgColor = Math.round(Math.random()*0xffffff).toString(16);
+            document.body.style.backgroundColor = "#" + bgColor;
+          },1000);
+        }
     </script>
-
 </head>
 
 <body>

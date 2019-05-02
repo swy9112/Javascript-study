@@ -27,6 +27,7 @@
             position: absolute;
             left: 50px;
             top: 120px;
+            transition: left 0.5s;
         }
 
         #nav {
@@ -35,7 +36,7 @@
         }
     </style>
 
-    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script>
         /*
 
@@ -53,11 +54,16 @@
         $(document).ready(function() {
             // 물고기 노드 구하기.
             var $fish = $("#img1");
+            var left;
 
             // 버튼에 이벤트 걸기.
             $("#btn_start").click(function() {
-                // 여기에 소스를 입력해주세요.
+                left = window.prompt("좌표를 입력하세요.");
 
+                if(0<=left && left<=430){
+                  console.log("111");
+                  $fish.css("left",left+"px");
+                }
             });
         })
 

@@ -27,6 +27,7 @@
             position: absolute;
             left: 50px;
             top: 120px;
+            transition: left 0.5s;
         }
 
         #nav {
@@ -35,7 +36,7 @@
         }
     </style>
 
-    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script>
         /*
          예제 02: 물고기 움직이기
@@ -54,16 +55,22 @@
 
             // 버튼에 이벤트 걸기.
             $("#btn_start").click(function() {
-
                 // 여기에 소스를 입력해주세요.
 
                 // 1. 값 입력.
-
+                var left = prompt("값을 입력하세요.");
 
                 // 2. 문자를 숫자로.
-
+                left = Number(left);
 
                 // 3. 비교.
+                if(0 <= left && left <= 400){
+                  $fish.css("left",left+"px");
+                }else if(left < 0){
+                  alert("0보다 큰 값을 입력해주세요.");
+                }else if(400<left){
+                  alert("400보다 작은 값을 입력해주세요.");
+                }
 
             });
         })

@@ -24,10 +24,18 @@
         var value = window.prompt("뚜시궁! 보스와의 연봉협상, 결과는?(연봉인상가를 입력해주세요.) ");
 
         // 2. 문자를 숫자로.
-
+        Number(value);
 
         // 비교 처리.
-
+        if(value < 100){
+          alert("회사를 바로 그만두고 이직 준비한다.");
+        }else if(100 <= value && value <500){
+          alert("3개월 후에 회사를 그만두고. 닭집 차린다.");
+        }else if(500 <= value && value <1000){
+          alert("그냥 다녀본다.");
+        }else if(1000 <= value){
+          alert("완전 내 회사, 평생 내 회사라는 마음으로 회사에 충성하며 다닌다.");
+        }
 
     </script>
 </head>

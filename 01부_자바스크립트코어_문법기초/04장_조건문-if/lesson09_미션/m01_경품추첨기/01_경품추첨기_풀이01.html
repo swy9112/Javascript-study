@@ -13,7 +13,17 @@
 
         //풀이 1
         var luckyValue = window.prompt("두궁두궁! 행운의 번호를 고르세요.");
-
+        
+        luckyValue = Number(luckyValue);
+        if(luckyValue === 1){
+          document.write("당첨! 냉장고");
+        }else if(luckyValue === 2){
+          document.write("당첨! 세탁기");
+        }else if(luckyValue === 3){
+          document.write("당첨! TV");
+        }else{
+          document.write("꽝입니다.");
+        }
 
 
 

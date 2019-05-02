@@ -33,17 +33,21 @@
     <script>
 
 
-        $(document).ready(function() {
+    $(document).ready(function() {
+        var bCheck = false;
+        var $chk = $(".d-checkbox .checkbox");
 
-            var $chk = $(".d-checkbox .checkbox");
+        $(".d-checkbox").click(function() {
+            if(!bCheck){
+              $chk.addClass("check");
+              bCheck=true;
+            }else{
+              $chk.removeClass("check");
+              bCheck=false;
+            }
 
-            $(".d-checkbox").click(function() {
-                // 소스를 여기에 입력해주세요.
-
-                // 클릭할때마다 현재 상태 값을 반전 시킴.
-
-            })
-        })
+        });
+    });
 
     </script>
 </head>

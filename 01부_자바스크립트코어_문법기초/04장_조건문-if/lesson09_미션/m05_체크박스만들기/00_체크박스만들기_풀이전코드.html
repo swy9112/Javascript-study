@@ -29,7 +29,7 @@
 
     </style>
 
-    <script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script>
 
 
@@ -38,7 +38,13 @@
             var $chk = $(".d-checkbox .checkbox");
 
             $(".d-checkbox").click(function() {
-                // 소스를 여기에 입력해주세요.
+                if(!bCheck){
+                  $chk.addClass("check");
+                  bCheck=true;
+                }else{
+                  $chk.removeClass("check");
+                  bCheck=false;
+                }
 
             })
         })

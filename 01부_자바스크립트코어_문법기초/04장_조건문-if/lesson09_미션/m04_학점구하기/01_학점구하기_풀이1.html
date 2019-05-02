@@ -30,9 +30,20 @@
         var value = window.prompt("평균 점수를 입력해주세요.");
 
         // 2. 문자를 숫자로.
-
+        value = Number(value);
 
         // 3. 학점 계산 후
+        if(90<=value &&value<=100){
+          document.write("A학점");
+        }else if(80<=value &&value<90){
+          document.write("B학점");
+        }else if(70<=value &&value<80){
+          document.write("C학점");
+        }else if(60<=value &&value<70){
+          document.write("D학점");
+        }else if(value<60){
+          document.write("F학점");
+        }
         // 4. 학점 출력
 
 

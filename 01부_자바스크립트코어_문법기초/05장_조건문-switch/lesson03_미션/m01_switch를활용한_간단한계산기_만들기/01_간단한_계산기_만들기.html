@@ -1,30 +1,90 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
-    <style>
-    </style>
-    <script>
-        /*
-         미션 01: switch를 활용한 간단한 계산기 만들기
-         switch문을 활용해 두 개의 수와 하나의 사칙연산자를 입력받아
-         계산 결과 값을 출력하는 간단한 계산기를 만들어 주세요.
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <style>
+  </style>
 
-
-         */
-
-        var num1 = window.prompt("첫 번째 숫자 값을 입력 해주세요.");
-        var op = window.prompt("사칙연산자 중 하나를 입력해주세요.");
-        var num2 = window.prompt("두 번째 숫자 값을 입력 해주세요.");
-
-
-
-    </script>
 </head>
 
 <body>
-    <input type="text" id="txt1"
+  <div>
+    <input type="text" id="txt1">
+    <button class="button">+</button>
+    <button class="button">-</button>
+    <button class="button">*</button>
+    <button class="button">/</button>
+    <button id="result">=</button>
+    <button id="reset">C</button>
+  </div>
+  <div id="viewArea">
+  </div>
+
+  <script type="text/javascript">
+    /*
+         미션 01: switch를 활용한 간단한 계산기 만들기
+         switch문을 활용해 두 개의 수와 하나의 사칙연산자를 입력받아
+         계산 결과 값을 출력하는 간단한 계산기를 만들어 주세요.
+    */
+    function calculator() {
+
+      //버튼 변수 선언
+      var text = document.getElementById("txt1");
+      var btn = document.getElementsByClassName("button");
+      var viewArea = document.getElementById("viewArea");
+      var result = document.getElementById("result");
+      var reset = document.getElementById("reset");
+
+      //영어 입력 방지
+      text.addEventListener("keypress", function() {
+        if (event.keyCode < 48 || event.keyCode > 57) {
+          event.returnValue = false;
+        }
+      });
+      //한글 입력 방지
+      text.addEventListener("keyup", function() {
+        this.value = this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+      });
+
+      var status = true;
+      var first = false;
+      //연산 버튼
+      for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", function() {
+          return function() {
+            if (text.value == "") {
+              viewArea.innerHTML = viewArea.innerHTML.slice(0, -1) + this.innerHTML;
+            }else if (text.value == "") {
+              viewArea.innerHTML = viewArea.innerHTML.slice(0, -1) + this.innerHTML;
+            } else {
+              viewArea.innerHTML += text.value + this.innerHTML;
+            }
+            text.value = "";
+          }
+        }());
+      }
+
+      //결과 버튼
+      result.addEventListener("click", function() {
+        // viewArea.innerHTML = eval(viewArea.innerHTML + text.value);
+        // console.log(viewArea.innerHTML + text.value);
+        // text.value = "";
+        // status = false;
+        boolean(viewArea.innerHTML);
+      });
+
+      //초기화 버튼
+      reset.addEventListener("click", function() {
+        viewArea.innerHTML = "";
+        text.value = "";
+      });
+
+    }
+
+    calculator();
+  </script>
 </body>
 
 </html>

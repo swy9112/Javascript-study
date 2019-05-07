@@ -5,7 +5,6 @@
         <title></title>
         <style>
         </style>
-        <script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
         <script>
             /*
              미션02: 랜덤 경품 추첨기
@@ -21,17 +20,29 @@
 
             힌트: 1에서 10사이의 랜덤 수를 생성하는 방법
                 parseInt(Math.random()*10)+1
- 
+
             */
 
-          
+
             //풀이 전 코드:
-            $(document).ready(function() {
-                // 버튼에 클릭 이벤트 리스너 등록
-                $("#start").click(function() {
-                    // 여기에 소스를 입력해 주세요.
-                })
+            window.onload = function(){
+              var play_btn = document.getElementById("start");
+              var result_area = document.getElementById("result_area");
+
+              play_btn.addEventListener("click", function(){
+                var number = parseInt(Math.random()*10)+1;
+                switch (number) {
+                  case 3 : result_area.innerHTML = "당첨! 냉장고"
+                    break;
+                  case 5 : result_area.innerHTML = "당첨! 세탁기"
+                    break;
+                  case 8 : result_area.innerHTML = "당첨! TV"
+                    break;
+                  default: result_area.innerHTML = "꽝!"
+                }
+              });
             }
+
 
         </script>
     </head>
@@ -40,7 +51,7 @@
         <button id="start">
             추첨
         </button>
-
+        <span id="result_area"></span>
     </body>
 
 </html>

@@ -48,18 +48,28 @@
         this.value = this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
       });
 
-      var status = true;
-      var first = false;
       //연산 버튼
+      var status = false;
       for (var i = 0; i < btn.length; i++) {
         btn[i].addEventListener("click", function() {
           return function() {
-            if (text.value == "") {
-              viewArea.innerHTML = viewArea.innerHTML.slice(0, -1) + this.innerHTML;
-            }else if (text.value == "") {
-              viewArea.innerHTML = viewArea.innerHTML.slice(0, -1) + this.innerHTML;
+            if(!status){
+              if (text.value == "" && !viewArea.innerText) {
+                return false;
+              } else if (text.value == "") {
+                viewArea.innerHTML = viewArea.innerHTML.slice(0, -1) + this.innerHTML;
+              } else {
+                viewArea.innerHTML += text.value + this.innerHTML;
+              }
             } else {
-              viewArea.innerHTML += text.value + this.innerHTML;
+              if(text.value == ""){
+                viewArea.innerHTML = viewArea.innerHTML + this.innerHTML;
+                status = false;
+              } else {
+                viewArea.innerHTML = "";
+                viewArea.innerHTML += text.value + this.innerHTML;
+                status = false;
+              }
             }
             text.value = "";
           }
@@ -68,11 +78,13 @@
 
       //결과 버튼
       result.addEventListener("click", function() {
-        // viewArea.innerHTML = eval(viewArea.innerHTML + text.value);
-        // console.log(viewArea.innerHTML + text.value);
-        // text.value = "";
-        // status = false;
-        boolean(viewArea.innerHTML);
+        if(text.value != "" && status || !viewArea.innerText){
+          return false;
+        } else {
+          viewArea.innerHTML = eval(viewArea.innerHTML + text.value);
+          text.value = "";
+          status = true;
+        }
       });
 
       //초기화 버튼

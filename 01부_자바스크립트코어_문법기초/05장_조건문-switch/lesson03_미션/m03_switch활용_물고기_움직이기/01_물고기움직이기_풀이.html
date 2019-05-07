@@ -1,31 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
-    <style>
-        body {
-            font-size: 9pt;
-        }
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <style>
+    body {
+      font-size: 9pt;
+    }
 
-        #panel {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #999;
-            position: relative;
-        }
+    #panel {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #999;
+      position: relative;
+    }
 
-        #fish {
-            position: absolute;
-            left: 50px;
-            top: 200px;
-        }
-
-    </style>
-
-    <script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
-    <script>
-        /*
+    #fish {
+      position: absolute;
+      left: 50px;
+      top: 200px;
+      transition: all 0.5s;
+    }
+  </style>
+  <script>
+    /*
 
          미션 03: switch를 활용한 물고기 움직이기
          이번 미션 역시 앞에서 풀었던 물고기 움직이기 예제를 업그레이드한 내용입니다.
@@ -59,38 +58,78 @@
 
 
          */
-        $(document).ready(function() {
-            // 물고기 노드 구하기.
-            var $fish = $("#fish");
-            // 위치 초기화, 시작위치는 50, 200
-            var x = 50;
-            var y = 200;
 
-            // 키보드 다운 이벤트 리스너 등록
-            $(document).keydown(function(e) {
-                console.log("입력한 키 코드 값 = " + e.keyCode);
+    window.onload = function() {
 
-                /*
-                 * 화살표 키에 따른 물고기 위치 움직이기
-                 * keyCode
-                 * 37 : 왼쪽 화살표
-                 * 39 : 오른쪽 화살표
-                 * 38 : 위쪽 화살표
-                 * 40 : 아래쪽 화살표
-                 */
-                //여기에 소스를 입력해주세요.
+      function fishMove(xPosition, yPosition) {
 
-            });
-        })
 
-    </script>
+        var fish = document.getElementById("fish");
+        var fishWidth = fish.offsetWidth;
+        var fishHeight = fish.offsetHidth;
+        var x = 50;
+        var y = 200;
+        var a = 1;
+
+        console.log(fishWidth);
+
+        document.addEventListener("keydown", function(e) {
+          var keyNumber = Number(e.keyCode);
+          switch (keyNumber) {
+            case 39:
+              console.log(x);
+              x += xPosition;
+              if(x < 380){
+                fish.style.left = x + "px";
+              } else{
+                x = 380
+                fish.style.left = x + "px";
+              }
+              break;
+            case 37:
+              x -= xPosition;
+              if(0 < x){
+                fish.style.left = x + "px";
+              } else {
+                x = 0
+                fish.style.left = x + "px";
+              }
+              break;
+            case 38:
+              y -= yPosition;
+              console.log("1")
+              if(y > 0){
+                fish.style.top = y + "px";
+              } else {
+                y = 0
+                fish.style.top = y + "px";
+              }
+              break;
+            case 40:
+              y += yPosition;
+              if(y < 430){
+                fish.style.top = y + "px";
+              } else {
+                y = 430
+                fish.style.top = y + "px";
+              }
+              break;
+          }
+        });
+      }
+
+      fishMove(100,100);
+    }
+
+
+  </script>
 
 </head>
 
 <body>
-<div id="panel">
+  <div id="panel">
     <img src="fish.png" id="fish">
-</div>
+  </div>
 </body>
-</html>
 
+</html>

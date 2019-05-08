@@ -14,6 +14,7 @@
             left: 0;
             top: 0;
             width: 120px;
+            transition: 0.5s;
         }
         #btnStart {
             padding:5px;
@@ -38,22 +39,33 @@
     })
 
     -->
-    <script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // 버튼 클릭 이벤트 실행.
-            $("#btnStart").click(function() {
+        window.onload = function(){
+          var imgTag = document.getElementsByTagName("img");
+          var playBtn = document.getElementById("btnStart");
+          var imgWidth = imgTag[0].offsetWidth;
+          var imgHeight = imgTag[0].offsetHeight;
 
-                // 이미지 찾기.
-                var $images = $("img");
-
-                // 이미지 개수 구하기.
-                var length = $images.length;
-
-                // 여기에 풀이를 입력해주세요.
-
-            });
-        });
+          var status = false;
+          playBtn.addEventListener("click",function(){
+            if(!status){
+              for(var i=0;i<imgTag.length;i++){
+                var lineLeft = imgTag[i].getAttribute("data-left");
+                var lineRight = imgTag[i].getAttribute("data-right");
+                imgTag[i].style.left = imgWidth * lineLeft + "px";
+                imgTag[i].style.top = imgHeight * lineRight + "px";
+              }
+              status = true;
+            } else {
+              for(var i=0;i<imgTag.length;i++){
+                imgTag[i].style.left = 0 + "px";
+                imgTag[i].style.top = 0 + "px";
+              }
+              status = false;
+            }
+          });
+        }
 
     </script>
 </head>
@@ -65,14 +77,14 @@
         </button>
     </div>
     <div class="image-container">
-        <img src="banners/1.png" >
-        <img src="banners/2.png" >
-        <img src="banners/3.png" >
-        <img src="banners/4.png" >
-        <img src="banners/5.png" >
-        <img src="banners/6.png" >
-        <img src="banners/7.png" >
-        <img src="banners/8.png" >
+        <img data-left="0" data-right="0" src="banners/1.png" >
+        <img data-left="1" data-right="0" src="banners/2.png" >
+        <img data-left="2" data-right="0" src="banners/3.png" >
+        <img data-left="0" data-right="1" src="banners/4.png" >
+        <img data-left="1" data-right="1" src="banners/5.png" >
+        <img data-left="2" data-right="1" src="banners/6.png" >
+        <img data-left="0" data-right="2" src="banners/7.png" >
+        <img data-left="1" data-right="2" src="banners/8.png" >
     </div>
 </body>
 </html>

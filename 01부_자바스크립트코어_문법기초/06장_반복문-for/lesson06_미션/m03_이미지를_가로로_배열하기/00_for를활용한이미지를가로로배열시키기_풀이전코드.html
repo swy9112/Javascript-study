@@ -14,8 +14,9 @@
             left: 0;
             top: 0;
             width: 120px;
+            transition: 0.5s;
         }
-        
+
         #btnStart{
             padding:5px;
             margin-bottom:5px;
@@ -41,23 +42,29 @@
             })
 
     -->
-    <script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // 버튼 클릭 이벤트 실행.
-            $("#btnStart").click(function() {
+      window.onload = function(){
+        var array_btn = document.getElementById("btnStart");
+        var imgTag = document.getElementsByTagName("img");
+        var imgWidth = imgTag[0].offsetWidth;
 
-                // 이미지 찾기.
-                var $images = $("img");
-
-                // 이미지 개수 구하기.
-                var length = $images.length;
-
-                // 여기에 풀이를 입력해주세요.
-
-            });
+        var status = false;
+        array_btn.addEventListener("click",function(){
+          if(!status){
+            for(var i=0;i<imgTag.length;i++){
+              imgTag[i].style.transition = i * 0.6 + "s";
+              imgTag[i].style.left = imgWidth * i + "px";
+            }
+            status = true;
+          } else {
+            for(var i=0;i<imgTag.length;i++){
+              imgTag[i].style.left = 0 + "px";
+            }
+            status = false;
+          }
         });
-
+      }
     </script>
 </head>
 

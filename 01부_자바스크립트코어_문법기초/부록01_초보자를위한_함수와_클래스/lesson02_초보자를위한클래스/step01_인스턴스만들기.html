@@ -10,9 +10,14 @@
              단계01: 인스턴스 만들기
 
              단계00: 계산기 클래스 만들기
-                   
+
              */
-            
+            var a = {
+              abc : function(a,b){
+                alert(a+b);
+              }
+            }
+
             // 계산기
             function Calculator(){
                 this.add = function(a,b){
@@ -21,16 +26,17 @@
                 this.sub =function(a,b){
                     alert("두 수의 차는 "+(a-b)+"입니다.");
                 }
-                
+
                 this.mul=function(a,b){
                     alert("두 수의 곱은 "+(a*b)+"입니다.");
                 }
-                
+
                 this.div=function(a,b){
                     alert("두 수의 나눈 값은 "+(a/b)+"입니다.");
                 }
             }
-            
+
+            a.abc(10,20);
 
 
 

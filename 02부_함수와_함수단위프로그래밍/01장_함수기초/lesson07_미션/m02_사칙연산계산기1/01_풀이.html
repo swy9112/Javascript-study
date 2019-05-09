@@ -5,9 +5,9 @@
 <title>Untitled Document</title>
 
 <script type="text/javascript">
- 
+
 /*
- 
+
 미션02: 사칙연산 계산기 만들기 1
  이번 미션은 실행 예처럼 동작할 수 있게 사칙연산 처리를 전문으로 하는 함수를 만드는 것입니다.
 실행 예:
@@ -23,9 +23,9 @@ document.write ("4 결과 = "+calculator("/", 20, 10), "<br>");
 4 결과 = 2
 5 결과 = 지원하지 않는 연산자입니다.
 */
-
-
-?
+function calculator(a,b,c){
+  return eval(b + a + c);
+}
 
 document.write("1 결과 = "+calculator("+", 20, 10), "<br>");
 document.write("2 결과 = "+calculator("-", 20, 10), "<br>");
@@ -38,7 +38,7 @@ document.write("5 결과 = "+calculator("%", 20, 10), "<br>");
 </head>
 
 <body>
-    
-       
+
+
 </body>
 </html>
